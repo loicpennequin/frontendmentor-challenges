@@ -1,0 +1,279 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+
+  --error:  hsl(0, 100%, 66%);
+  --primary-active: hsl(278, 94%, 30%);
+  --background:  hsl(0, 0%, 100%);
+  --primary-light:  hsl(270, 3%, 80%);
+  --primary:  hsl(279, 6%, 55%);
+  --primary-dark: hsl(278, 68%, 11%);
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  margin: 0; 
+  font-family: 'Space Grotesk', sans-serif;
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: 1fr auto;
+}
+
+form {
+  padding-inline: 1rem;
+  margin-inline: auto;
+  max-width: 30rem;
+}
+
+fieldset {
+ border: none;
+ padding: 0;
+ margin: 0;
+}
+
+fieldset:not(.date-and-cvc) > * + * {
+  margin-block-start: .5rem;
+}
+
+fieldset > label {
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+fieldset >  input {
+  display: block;
+  width: 100%;
+  padding: .5rem;
+  border-radius: .5rem;
+  border: solid 1px var(--primary-light);
+  font-size: inherit;
+}
+
+fieldset >  input::placeholder {
+  color: var(--primary-light);
+}
+
+fieldset >  input.error {
+  border-color: var(--error);
+}
+
+fieldset > p {
+  margin-block: 0;
+}
+
+form > * + * {
+  margin-block-start: 1rem;
+}
+
+.date-and-cvc {
+  --input-min-size: minmax(5rem, 10vw);
+  display: grid;
+  grid-template-columns: var(--input-min-size) var(--input-min-size) minmax(0, 1fr);
+  grid-gap: .5rem;
+}
+
+.date-and-cvc > label:nth-of-type(1) {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+.date-and-cvc > label:nth-of-type(2) {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.date-and-cvc > input:nth-of-type(1) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.date-and-cvc > input:nth-of-type(2) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.date-and-cvc > input:nth-of-type(3) {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.date-and-cvc > p:nth-of-type(1) {
+  grid-column: 1 / span 2;
+  grid-row: 3;
+}
+
+.date-and-cvc > p:nth-of-type(2) {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+button {
+  border-radius: .5rem;
+  background-color: var(--primary-dark);
+  padding: .75rem;
+  color: white;
+  display: block;
+  width: 100%;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.hidden {
+  display: none;
+}
+
+aside {
+  padding: 3rem 1rem;
+  background: url('images/bg-main-mobile.png');
+  background-size: 100% 85%;
+  background-repeat-y: no-repeat;
+}
+
+.aside__inner {
+  display: grid;
+  margin-inline: auto;
+  max-width: 20rem;
+}
+
+.aside__inner > * {
+  grid-row: 1;
+  grid-column: 1;
+  margin-block-end: 3rem;
+}
+
+.credit-card {
+  aspect-ratio: 447 / 245;
+  position: relative;
+  width: 80%;
+}
+
+.credit-card__front {
+  --spacing: 1rem;
+  padding: var(--spacing);
+  background: url('images/bg-card-front.png');
+  background-size: cover;
+  top: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: calc(var(--spacing) / 2);
+  color: white;
+  font-size: 0.8rem;
+}
+
+.credit-card__front::after{
+  content: '';
+  background: url('images/card-logo.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 35%;
+  top: var(--spacing);
+  left: var(--spacing);
+  position: absolute;
+  aspect-ratio: 84 / 47;
+}
+
+.credit-card__front > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.credit-card__back {
+  background: url('images/bg-card-back.png');
+  background-size: cover;
+  justify-self: flex-end;
+}
+
+.credit-card__back > span {
+  position: absolute;
+  right: 11%;
+  top: 42%;
+  color: white;
+  font-size: clamp(0.75rem, 3vw, 1rem);
+}
+
+.form-error {
+  color: var(--error);
+  font-size: 0.9rem;
+}
+
+section {
+  padding-inline: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+section::before {
+  content: '';
+  background: url('images/icon-complete.svg');
+  background-size: cover;
+  width: 6rem;
+  aspect-ratio: 1;
+}
+section > * {
+  margin: 0;
+}
+
+section > p:nth-of-type(1) {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+@media screen and (max-width: 80em) {
+  aside {
+      margin-block-end: 3rem;
+  }
+}
+
+@media screen and (min-width: 80em) {
+  main {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 20rem;
+  }
+
+  .date-and-cvc {
+    --input-min-size: minmax(5rem, 4vw);
+  }
+
+  aside {
+    background: url('images/bg-main-desktop.png');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+  }
+
+  .aside__inner {
+    flex-grow: 1;
+    transform: translate(10vw);
+    max-width: 30rem;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .credit-card__front {
+    top: 0;
+    font-size: 1rem;
+    gap: var(--spacing);
+  }
+
+  .credit-card__back { 
+    left: 6rem;
+  }
+}

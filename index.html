@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Interactive card details form</title>
+
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <aside
+        aria-hidden="true"
+        for="name card-number cvc exp-month exp-year"
+        form="credit-card-form"
+      >
+        <div class="aside__inner">
+          <div class="credit-card credit-card__back">
+            <span id="preview-cvc">000</span>
+          </div>
+
+          <div class="credit-card credit-card__front">
+            <span id="preview-number">0000 0000 0000 0000</span>
+            <div>
+              <span id="preview-name">Jane Appleseed</span>
+              <span id="preview-date">00/00</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <form id="credit-card-form" novalidate>
+        <fieldset>
+          <label for="name">Cardholder Name</label>
+          <input
+            placeholder="e.g. Jane Appleseed"
+            id="name"
+            name="name"
+            required
+          />
+          <p class="form-error" data-error="true"></p>
+        </fieldset>
+
+        <fieldset>
+          <label for="card-number">Card Number</label>
+          <input
+            placeholder="e.g. 1234 5678 9123 0000"
+            id="card-number"
+            name="number"
+            pattern="[0-9, \s]+"
+            required
+          />
+          <p class="form-error" data-error="true"></p>
+        </fieldset>
+
+        <fieldset class="date-and-cvc">
+          <label for="exp-month">Exp. Date (MM/YY)</label>
+          <input
+            placeholder="MM"
+            id="exp-month"
+            name="exp-month"
+            required
+            pattern="[0-9]+"
+          />
+          <input
+            placeholder="MM"
+            id="exp-year"
+            name="exp-year"
+            required
+            pattern="[0-9]+"
+          />
+          <p class="form-error" data-error="true"></p>
+
+          <label for="cvc">CVC</label>
+          <input
+            placeholder="e.g. 123"
+            id="cvc"
+            name="cvc"
+            required
+            pattern="[0-9]+"
+          />
+          <p class="form-error" data-error="true"></p>
+        </fieldset>
+        <button>Confirm</button>
+      </form>
+
+      <section class="hidden">
+        <p>Thank you!</p>
+        <p>We've added your card details</p>
+        <button id="reset-button">Continue</button>
+      </section>
+    </main>
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+        Frontend Mentor
+      </a>
+      . Coded by
+      <a href="#">Your Name Here</a>
+      .
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
